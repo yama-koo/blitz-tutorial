@@ -3,7 +3,9 @@ import db from "db"
 import { z } from "zod"
 
 const CreateChoice = z.object({
-  name: z.string(),
+  text: z.string(),
+  votes: z.number(),
+  question: z.object({ text: z.string() }),
 })
 
 export default resolver.pipe(resolver.zod(CreateChoice), resolver.authorize(), async (input) => {
